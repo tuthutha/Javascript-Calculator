@@ -72,7 +72,7 @@ function saveCourses() {
 } 
 
 // 3. Tạo khóa học
-function onCreateCourse() {
+function handleCreateCourse() {
     var name = getValueInput('#name');
     var description = getValueInput('#description');
     var price = getValueInput('#price');
@@ -98,6 +98,15 @@ function resetFormCourse(selector) {
     var formElement = document.querySelector(selector);
     formElement.reset(); 
 } 
+
+// Nếu ấn vào Sửa, hoặc ấn vào tạo
+function onCreateCourse() {
+    if (editMode) {
+        handleEditCourse();
+    } else {
+        handleCreateCourse();
+    }
+}
 
 // 4. Sửa khóa học 
 var editMode = false;
@@ -145,4 +154,3 @@ function setInputValue(selector, value) {
 function getValueInput(selector) {
     return document.querySelector(selector).value;
 }
-

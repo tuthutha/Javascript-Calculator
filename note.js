@@ -78,7 +78,7 @@ function saveCourses() {
 } 
 
 // 3. Tạo khóa học
-function onCreateCourse() {
+function handleCreateCourse() {
     // Lấy giá trị từ các ô input để tạo khóa học mới
     var name = getValueInput('#name');
     var description = getValueInput('#description');
@@ -109,6 +109,19 @@ function resetFormCourse(selector) {
     var formElement = document.querySelector(selector);
     formElement.reset(); // Xóa dữ liệu trong form
 } 
+
+// Hàm xử lý khi nhấn nút "Tạo khóa học" hoặc "Lưu khóa học"
+// Nếu biến editMode là true (đang ở chế độ chỉnh sửa), 
+// hàm sẽ gọi handleEditCourse để lưu thay đổi cho khóa học đang chỉnh sửa
+// Nếu không (editMode là false, tức là ở chế độ tạo mới), 
+// hàm sẽ gọi handleCreateCourse để thêm khóa học mới vào danh sách
+function onCreateCourse() {
+    if (editMode) {
+        handleEditCourse(); // Lưu khóa học đang chỉnh sửa
+    } else {
+        handleCreateCourse(); // Tạo khóa học mới
+    }
+}
 
 // 4. Sửa khóa học 
 var editMode = false; // Biến trạng thái kiểm tra xem đang ở chế độ sửa hay không
